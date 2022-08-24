@@ -7,7 +7,7 @@ pygame.init()
 def obstacle_movement(obstacle_list):
     if obstacle_list:
         for obstacle_rect in obstacle_list:
-            obstacle_rect.x -= 6
+            obstacle_rect.x -= 20
 
             screen.blit(snail_surface,obstacle_rect)
         obstacle_list = [obstacle for obstacle in obstacle_list if obstacle.x > -100]
@@ -57,11 +57,12 @@ snail_rect = snail_surface.get_rect(midbottom = (800,300))
 obstacle_rect_list = []
 
 player_surf = pygame.image.load("players/player_walk_1.png").convert_alpha()
-player_rect = player_surf.get_rect(midbottom = (80,300))
+player_surf = pygame.transform.rotozoom(player_surf,0,1)
+player_rect = player_surf.get_rect(center = (80,300))
 player_gravity = 0
-player_stand = pygame.image.load("players/player_stand.png").convert_alpha()
+player_stand = pygame.image.load("players/player_walk_1.png").convert_alpha()
 player_stand = pygame.transform.rotozoom(player_stand,0,2)
-player_stand_rect = player_stand.get_rect(center = (400,250))
+player_stand_rect = player_stand.get_rect(center = (400,200))
 
 game_surf = test_font.render("SRACKOMRDKA", False,(255,255,255))
 game_rect = game_surf.get_rect(center = (400,50))
